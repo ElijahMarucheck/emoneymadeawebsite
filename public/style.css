@@ -1,0 +1,128 @@
+:root {
+  --purple: #4B2E83;
+  --gold: #B7A57A;
+  --tan: #e2d5b7;
+  --pink: #ca6cbd;
+  --gray: #cbc6c6;
+  --gap: clamp(6px, 1.5vw, 14px);   /* replaces 1dvw, with limits */
+  --max-width: 900px;               /* page stops growing here */
+
+
+
+  --banner-w:  140px;
+  --banner-x: calc((100vw - var(--max-width)) / 4 - var(--banner-w) / 2);
+
+  background-color: var(--purple);
+  background-image: 
+    url("pictures/side-art/banner-1a.png"),
+    url("pictures/side-art/banner-2a.png");
+    
+  background-position: 
+    left var(--banner-x) top 0,
+    right var(--banner-x) top 0;
+  background-repeat: repeat-y; /* repeat-y for vertical columns repeating, repeat for whole backdrop*/
+  background-size: var(--banner-w) auto; /*AKLSDFJAKSLDFJK*/
+  
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+ 
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;   /* padding no longer adds to widths */
+}
+
+body {
+  --edge: clamp(10px, 3vw, 32px);
+
+  max-width: var(--max-width);
+  margin-block: var(--edge);
+  margin-inline: max(var(--edge), (100% - var(--max-width)) / 2);
+
+  padding: clamp(12px, 3vw, 32px);
+  background-color: var(--tan);
+  font-family: "Futura", "Courier Prime", monospace;
+  font-size: clamp(0.875rem, 0.8rem + 0.5vw, 1.125rem);  /* ~14px to 18px */
+  line-height: 1.5;
+
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* attempting to add side images of banners to website if it's wide enough */
+/*
+.side-art {
+  position: fixed;
+  top: 50%;
+  translate: 0 -50%;
+  height: 100dvh;
+  width: auto;
+  max-width: calc((100% - var(--max-width) / 2 - 2rem));
+  object-fit: contain;
+  pointer-events: none;
+  image-rendering: pixelated;
+}
+.side-art.left {
+  left: 1rem; 
+  translate: -50% -50%;
+}
+.side-art.right {
+  right: 1rem; 
+  translate: 50% -50%;
+}
+  */
+
+@media (max-width: 1275px) {
+  :root {background-image: none; }
+}
+
+.title { /* "Elijah's Website" */
+  color: rgb(32, 10, 74);
+  text-shadow: 0 -1px 1px #FF7500, 0 -2px 3px #FFE808;
+  text-align: center;
+  margin-top: 10px;
+  font-family: "Press Start 2P", monospace;
+  font-size: clamp(1.1rem, 4vw, 2.25rem);
+}
+
+/* .grid is parent of .grid-picture and .grid-caption */
+.grid {
+  border: var(--gap) solid var(--gold);
+  padding-block: 1.5rem;
+  margin-top: 10px;
+  text-align: center;
+  background-color: var(--gray);
+
+  column-count: 2;
+  column-gap: 2rem;
+  column-rule: var(--gap) solid var(--pink);
+}
+
+.grid .grid-caption-columns {
+  column-count: 1;
+}
+
+.grid-picture {
+  width: 80%; /* 80% of column */
+  border: 3px solid;
+  box-shadow: 5px -3px 10px black;
+  break-inside: avoid;
+}
+
+.grid-caption {
+  color: var(--pink);
+  margin-inline: clamp(0.5rem, 3vw, 1.5rem);
+}
+
+.social-media {
+  font-size: 1.875rem;     
+  background-color: rgb(232, 190, 141);
+  width: min(100%, 300px);
+  margin: 20px auto 0;
+}
+
+.fa-youtube { color: red; }
+.fa-square-instagram { color: palevioletred; }
